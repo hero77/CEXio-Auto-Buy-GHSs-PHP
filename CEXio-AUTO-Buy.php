@@ -16,7 +16,7 @@ while(true)
 {
 
     // Working Function
-    	$StartTime = FirstFunc('Your_NickName','Your_APIKey','YOUR_APISecret');
+    	$StartTime = FirstFunc('edhiefzl','yYT83IjOzV5CfsjxdV2gqAw6wk','ZMsQQQytWeLudOqebrmkHUKM4');
 
 
 
@@ -37,7 +37,7 @@ while(true)
 }
 
 // Work Function
-function FirstFunc($username, $api_key, $api_secret)
+function FirstFunc($edhiefzl, $yYT83IjOzV5CfsjxdV2gqAw6w, $ZMsQQQytWeLudOqebrmkHUKM4)
 {
 	static $StartTime = 0;
 	echo " \n Reading DATA from CEX.IO... \n \n";
@@ -49,8 +49,8 @@ function FirstFunc($username, $api_key, $api_secret)
 
 	// Ballance
 	$nonce	= round(microtime(true)*100);
-	$myvars	= 'key=' . $api_key .
-		      '&signature=' . make_signature($username,$api_key,$api_secret,$nonce) .
+	$myvars	= 'key=' . $yYT83IjOzV5CfsjxdV2gqAw6w .
+		      '&signature=' . make_signature($edhiefzl, $yYT83IjOzV5CfsjxdV2gqAw6w, $ZMsQQQytWeLudOqebrmkHUKM4,$nonce) .
 		      '&nonce=' . $nonce;
 	$OutRes	= getCEX($myvars);
 
@@ -79,8 +79,8 @@ function FirstFunc($username, $api_key, $api_secret)
 		echo 'Ready to buy (GHS/BTC) - ', $RealGH, " (", $GHSBTC_available, " GHS) \n";
 
 		$nonce		= round(microtime(true)*100);
-		$buyVars = 'key=' . $api_key .
-			       '&signature=' . make_signature($username,$api_key,$api_secret,$nonce) .
+		$buyVars = 'key=' . $yYT83IjOzV5CfsjxdV2gqAw6w .
+			       '&signature=' . make_signature($edhiefzl, $yYT83IjOzV5CfsjxdV2gqAw6w, $ZMsQQQytWeLudOqebrmkHUKM4,$nonce) .
 			       '&nonce=' . $nonce .
 			       '&type=buy' .
 			       '&price=' . number_format(1.0001 * $BTCPrice,8) .
@@ -109,7 +109,7 @@ function FirstFunc($username, $api_key, $api_secret)
 
 		$nonce		= round(microtime(true)*100);
 		$buyVars = 'key=' . $api_key .
-			       '&signature=' . make_signature($username,$api_key,$api_secret,$nonce) .
+			       '&signature=' . make_signature($edhiefzl, $yYT83IjOzV5CfsjxdV2gqAw6w, $ZMsQQQytWeLudOqebrmkHUKM4,$nonce) .
 			       '&nonce=' . $nonce .
 			       '&type=buy' .
 			       '&price=' . number_format(1.0001 * $NMCPrice,8) .
@@ -152,10 +152,10 @@ function FirstFunc($username, $api_key, $api_secret)
 
 
 
-function make_signature($username,$api_key,$api_secret,$nonce)
+function make_signature($edhiefzl, $yYT83IjOzV5CfsjxdV2gqAw6w, $ZMsQQQytWeLudOqebrmkHUKM4,$nonce)
 {
-	$string = $nonce . $username . $api_key; //Create string
-	$hash = hash_hmac('sha256', $string, $api_secret); //Create hash
+	$string = $nonce . $edhiefzl . $yYT83IjOzV5CfsjxdV2gqAw6w; //Create string
+	$hash = hash_hmac('sha256', $string, $ZMsQQQytWeLudOqebrmkHUKM4); //Create hash
 	$hash = strtoupper($hash);
 
 	return $hash;
